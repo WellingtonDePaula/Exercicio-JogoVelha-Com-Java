@@ -9,9 +9,7 @@ public class Tabela {
         //Inicia a tabela
         for(int i = 0; i < matriz.length; i++) {
             for(int j = 0; j < matriz[i].length; j++) {
-                if(matriz[i][j] == null) {
-                    matriz[i][j] = nullPointer;
-                }
+                matriz[i][j] = nullPointer;
             }
         }
     }

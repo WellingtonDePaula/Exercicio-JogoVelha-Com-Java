@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Jogador {
     public String name;
     public String symbol;
-    public Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     //Faz a jogada do jogador
     public double play() {
