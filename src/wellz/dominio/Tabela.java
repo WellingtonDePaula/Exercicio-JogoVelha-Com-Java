@@ -1,0 +1,82 @@
+package wellz.dominio;
+
+public class Tabela {
+    public String nullPointer = ".";
+    public boolean someoneWin = false;
+    public String[][] matriz = new String[3][3];
+
+    public void setUpMatriz() {
+        for(int i = 0; i < matriz.length; i++) {
+            for(int j = 0; j < matriz[i].length; j++) {
+                if(matriz[i][j] == null) {
+                    matriz[i][j] = nullPointer;
+                }
+            }
+        }
+    }
+
+    public void drawMatriz() {
+        for(int i = 0; i < matriz.length; i++) {
+            for(int j = 0; j < matriz[i].length; j++) {
+                System.out.print(matriz[i][j] + " ");
+
+                if(j == matriz[i].length - 1) {
+                    System.out.println();
+                }
+            }
+        }
+    }
+
+    public boolean addPlayToMatriz(int coluna, int linha, Jogador jogador) {
+        boolean validInput = false;
+        while(!validInput) {
+            try {
+                if(!matriz[coluna][linha].equals(nullPointer)) {
+                    drawMatriz();
+                    System.out.println("\nJogada inválida, jogue novamente");
+                    return false;
+                } else {
+                    matriz[coluna][linha] = jogador.symbol;
+                    return true;
+                }
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                System.out.println("Jogada inválida, coluna ou linha inválidas");
+                drawMatriz();
+                return false;
+            }
+        }
+        return false;
+    }
+
+    public void checkWin(Jogador jogador) {
+        if (!matriz[0][0].equals(nullPointer) && !matriz[0][1].equals(nullPointer) && !matriz[0][2].equals(nullPointer) && !matriz[1][0].equals(nullPointer) && !matriz[1][1].equals(nullPointer) && !matriz[1][2].equals(nullPointer) && !matriz[2][0].equals(nullPointer) && !matriz[2][1].equals(nullPointer) && !matriz[2][2].equals(nullPointer)) {
+            System.out.println("Ces são muito ruim em, deu velha");
+            someoneWin = true;
+        } else {
+            for (int i = 0; i < matriz.length; i++) {
+                for (int j = 0; j < matriz[i].length; j++) {
+                    if (matriz[i][0].equals(jogador.symbol) && matriz[i][1].equals(jogador.symbol) && matriz[i][2].equals(jogador.symbol)) {
+                        System.out.println(jogador.name + " ganhou");
+                        someoneWin = true;
+                        break;
+                    }
+                    if (matriz[0][j].equals(jogador.symbol) && matriz[1][j].equals(jogador.symbol) && matriz[2][j].equals(jogador.symbol)) {
+                        System.out.println(jogador.name + " ganhou");
+                        someoneWin = true;
+                        break;
+                    }
+                    if (matriz[0][0].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][2].equals(jogador.symbol)) {
+                        System.out.println(jogador.name + " ganhou");
+                        someoneWin = true;
+                        break;
+                    }
+                    if (matriz[0][2].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][0].equals(jogador.symbol)) {
+                        System.out.println(jogador.name + " ganhou");
+                        someoneWin = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+}
