@@ -3,8 +3,6 @@ package wellz.test;
 import wellz.dominio.Jogador;
 import wellz.dominio.Tabela;
 
-import javax.management.StandardMBean;
-
 public class MainTest03 {
     public static void main(String[] args) {
         Tabela tabela = new Tabela();

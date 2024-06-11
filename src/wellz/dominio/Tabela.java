@@ -49,34 +49,43 @@ public class Tabela {
     }
 
     public void checkWin(Jogador jogador) {
+        //verifica se deu velha
         if (!matriz[0][0].equals(nullPointer) && !matriz[0][1].equals(nullPointer) && !matriz[0][2].equals(nullPointer) && !matriz[1][0].equals(nullPointer) && !matriz[1][1].equals(nullPointer) && !matriz[1][2].equals(nullPointer) && !matriz[2][0].equals(nullPointer) && !matriz[2][1].equals(nullPointer) && !matriz[2][2].equals(nullPointer)) {
             System.out.println("Ces são muito ruim em, deu velha");
             someoneWin = true;
-        } else {
-            for (int i = 0; i < matriz.length; i++) {
-                for (int j = 0; j < matriz[i].length; j++) {
-                    if (matriz[i][0].equals(jogador.symbol) && matriz[i][1].equals(jogador.symbol) && matriz[i][2].equals(jogador.symbol)) {
-                        System.out.println(jogador.name + " ganhou");
-                        someoneWin = true;
-                        break;
-                    }
-                    if (matriz[0][j].equals(jogador.symbol) && matriz[1][j].equals(jogador.symbol) && matriz[2][j].equals(jogador.symbol)) {
-                        System.out.println(jogador.name + " ganhou");
-                        someoneWin = true;
-                        break;
-                    }
-                    if (matriz[0][0].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][2].equals(jogador.symbol)) {
-                        System.out.println(jogador.name + " ganhou");
-                        someoneWin = true;
-                        break;
-                    }
-                    if (matriz[0][2].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][0].equals(jogador.symbol)) {
-                        System.out.println(jogador.name + " ganhou");
-                        someoneWin = true;
-                        break;
-                    }
-                }
+        }
+        ///////////////////////
+
+        //verticais
+        if (matriz[0][0].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][2].equals(jogador.symbol)) {
+            System.out.println(jogador.name + " ganhou");
+            someoneWin = true;
+        }
+        /////
+        if (matriz[0][2].equals(jogador.symbol) && matriz[1][1].equals(jogador.symbol) && matriz[2][0].equals(jogador.symbol)) {
+            System.out.println(jogador.name + " ganhou");
+            someoneWin = true;
+        }
+        ///////////////////////
+
+        for (int i = 0; i < matriz.length; i++) {
+            //Verifica horizontalmente
+            if (matriz[i][0].equals(jogador.symbol) && matriz[i][1].equals(jogador.symbol) && matriz[i][2].equals(jogador.symbol)) {
+                System.out.println(jogador.name + " ganhou");
+                someoneWin = true;
+                break;
             }
+            ///////////////////////
+            for (int j = 0; j < matriz[i].length; j++) {
+                //verifica verticalmente
+                if (matriz[0][j].equals(jogador.symbol) && matriz[1][j].equals(jogador.symbol) && matriz[2][j].equals(jogador.symbol)) {
+                    System.out.println(jogador.name + " ganhou");
+                    someoneWin = true;
+                    break;
+                }
+                ///////////////////////
+            }
+            break;
         }
     }
 }
