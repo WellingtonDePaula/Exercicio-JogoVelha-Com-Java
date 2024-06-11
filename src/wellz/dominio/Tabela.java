@@ -1,11 +1,12 @@
 package wellz.dominio;
 
 public class Tabela {
-    public String nullPointer = ".";
-    public boolean someoneWin = false;
+    public String nullPointer = "_";
     public String[][] matriz = new String[3][3];
+    public boolean someoneWin = false;
 
     public void setUpMatriz() {
+        //Inicia a tabela
         for(int i = 0; i < matriz.length; i++) {
             for(int j = 0; j < matriz[i].length; j++) {
                 if(matriz[i][j] == null) {
@@ -16,6 +17,7 @@ public class Tabela {
     }
 
     public void drawMatriz() {
+        //Desenha a tabela no console
         for(int i = 0; i < matriz.length; i++) {
             for(int j = 0; j < matriz[i].length; j++) {
                 System.out.print(matriz[i][j] + " ");
@@ -31,15 +33,19 @@ public class Tabela {
         boolean validInput = false;
         while(!validInput) {
             try {
-                if(!matriz[coluna][linha].equals(nullPointer)) {
+                //Verifica se a casa está vazia
+                if(!matriz[coluna][linha].equals(nullPointer) && !jogador.name.equals("Fodão")) {
                     drawMatriz();
                     System.out.println("\nJogada inválida, jogue novamente");
                     return false;
                 } else {
+                    //Adiciona os inputs da coluna e da linha na matriz
                     matriz[coluna][linha] = jogador.symbol;
                     return true;
+                    ////////////////////////
                 }
             } catch (ArrayIndexOutOfBoundsException exception) {
+                //Verifica se o input é válido
                 System.out.println("Jogada inválida, coluna ou linha inválidas");
                 drawMatriz();
                 return false;

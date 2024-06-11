@@ -18,20 +18,20 @@ public class Main {
         jogador1.selectSymbol(jogador2);
         //////////////////////////////////////
 
-        //Fazendo o setting up da matriz
+        //Iniciando a matriz/tabela
         tabela.setUpMatriz();
         ////////////////////////////////
 
         //Começando o jogo
-        System.out.println("Que comecem os jogos: ");
+        System.out.println("\nQue comecem os jogos: ");
 
         tabela.drawMatriz();
 
         while(true) {
-            double insTabela;
-            boolean played = false;
             int column;
             int line;
+            double insTabela;
+            boolean played = false;
 
             while(!played) {
                 //Jogador1 joga
@@ -40,9 +40,13 @@ public class Main {
                 line = (int) (Math.floor(insTabela/10)) - 1;
                 played = tabela.addPlayToMatriz(column, line, jogador1);
             }
+            //retorna a variavle de ter jogado para false
             played = false;
+
             tabela.drawMatriz();
             tabela.checkWin(jogador1);
+
+            //para o loop caso alguém vença
             if(tabela.someoneWin) {
                 break;
             }
@@ -55,8 +59,11 @@ public class Main {
                 line = (int) (Math.floor(insTabela/10)) - 1;
                 played = tabela.addPlayToMatriz(column, line, jogador2);
             }
+
             tabela.drawMatriz();
             tabela.checkWin(jogador2);
+
+            //para o loop caso alguém vença
             if(tabela.someoneWin) {
                 break;
             }
