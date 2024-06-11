@@ -34,7 +34,7 @@ public class Tabela {
         while(!validInput) {
             try {
                 //Verifica se a casa está vazia
-                if(!matriz[coluna][linha].equals(nullPointer) && !jogador.name.equals("Fodão")) {
+                if(!matriz[coluna][linha].equals(nullPointer) && !jogador.name.equals("FODÃO")) {
                     drawMatriz();
                     System.out.println("\nJogada inválida, jogue novamente");
                     return false;
